@@ -20,6 +20,19 @@ def InsertionSort(nums):
             nums[index] = selected
     return nums
 
+def insertSort(array):
+    if len(array)<=1:
+        return array
+    for i in range(1,len(array)):
+        value = array[i]
+        for j in range(i)[::-1]:  #查找位置，并后移元素
+            if value < array[j]:
+                array[j+1] = array[j]
+            else:
+            	break
+        array[j+1] = value          #在j后插入
+    return array
+
 
 
 if __name__ =='__main__':
