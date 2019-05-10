@@ -26,11 +26,31 @@ def QuickSort(nums,start,end):
         QuickSort(nums,right_pointer+1,end)
     return nums
 
+
+def partition(array, p, r):
+    pirot = array[r]
+    i = p
+    for j in range(p, r):
+        if array[j] <= pirot:
+            array[i], array[j] = array[j], array[i]
+            i = i + 1
+    array[r], array[i] = array[i], array[r]
+    return i
+
+def Quick_Sort(array, p, r):
+    if p < r:
+        q = partition(array, p, r)
+        Quick_Sort(array, p, q-1)
+        Quick_Sort(array, q+1, r)
+
+
+
 if __name__ =='__main__':
-    nums = list(np.random.randint(100,size=100))
+    nums = list(np.random.randint(100,size=1000))
     print('The nums array before QuickSort : {}'.format(nums))
     start = time.time()
-    nums_sorted = QuickSort(nums,0,len(nums)-1)
+    #nums_sorted = QuickSort(nums,0,len(nums)-1)
+    Quick_Sort(nums,0,len(nums)-1)
     end = time.time()
-    print('The nums array after QuickSort : {}'.format(nums_sorted))
+    print('The nums array after QuickSort : {}'.format(nums))
     print('QuickSort costs time : {} s'.format(end-start))
