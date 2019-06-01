@@ -28,7 +28,7 @@ class solution():
             self.listHead = root
             self.listTail = root
         else:
-            self.listHead.right = root
+            self.listTail.right = root
             root.left = self.listTail
             self.listTail = root
         self.convert(root.right)
